@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Cigar Locations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #searchBox {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find Cigar Locations</h1>
+    <input id="searchBox" type="text" placeholder="Enter a place (e.g., cigar bar)">
+    <div id="map"></div>
+
+    <h2>Найденные магазины</h2>
+    <table id="infoTable">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Адрес</th>
+                <th>Рейтинг</th>
+                <th>Количество оценок</th>
+                <th>Телефон</th>
+                <th>Веб-сайт</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Строки будут добавляться здесь -->
+        </tbody>
+    </table>
+
+    <!-- Подключение Google Maps API -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBaN_GVJPGl4UszRbJIJ2iziVBh8XOsMo&libraries=places&callback=initMap"></script>
+    <!-- Подключение внешнего JS -->
+    <script src="script.js"></script>
+</body>
+</html>
