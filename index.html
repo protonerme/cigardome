@@ -3,70 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Cigar Locations</title>
+    <title>Cigar Locations Finder</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f9f9f9;
         }
-        h1, h2 {
+        h1 {
             text-align: center;
+            color: #333;
             margin: 20px 0;
+            text-shadow: 1px 1px 2px #ddd;
         }
-        #searchBox {
-            display: block;
-            width: 80%;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin: 10px auto;
+            width: 90%;
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
             padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             font-size: 16px;
+        }
+        #radiusValue {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            background: #007BFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
         }
         #map {
             width: 100%;
-            height: 500px;
+            height: 400px;
+            margin-top: 20px;
+            border-radius: 8px;
         }
         table {
-            width: 90%;
-            margin: 20px auto;
+            width: 100%;
+            margin-top: 20px;
             border-collapse: collapse;
-        }
-        table, th, td {
             border: 1px solid #ddd;
         }
-        th, td {
+        table th, table td {
             padding: 10px;
-            text-align: left;
+            border: 1px solid #ddd;
+            text-align: center;
         }
-        th {
+        table th {
             background-color: #f4f4f4;
         }
     </style>
 </head>
 <body>
-    <h1>Find Cigar Locations</h1>
-    <input id="searchBox" type="text" placeholder="Enter a place (e.g., cigar bar)">
+    <h1>Cigar Locations Finder</h1>
+
+    <div class="container">
+        <label for="countryFilter">Country:</label>
+        <select id="countryFilter">
+            <option value="us">United States</option>
+            <option value="ca">Canada</option>
+            <option value="gb">United Kingdom</option>
+        </select>
+
+        <label for="cityFilter">City:</label>
+        <input id="cityFilter" type="text" placeholder="Enter city">
+
+        <label for="searchBox">Enter a Place (e.g., cigar bar):</label>
+        <input id="searchBox" type="text" placeholder="Search places...">
+
+        <div id="radiusValue">Search Radius: 5000m</div>
+        <input id="radiusFilter" type="range" min="1000" max="20000" step="1000" value="5000">
+
+        <button id="showCigarPlacesNearbyButton">Show Cigar Places Nearby</button>
+        <button id="showCigarPlacesByLocationButton">Show Cigar Places Near Me</button>
+    </div>
+
     <div id="map"></div>
 
-    <h2>Найденные магазины</h2>
+    <h2 style="text-align:center; margin-top:20px;">Saved Places</h2>
     <table id="infoTable">
         <thead>
             <tr>
-                <th>Название</th>
-                <th>Адрес</th>
-                <th>Рейтинг</th>
-                <th>Количество оценок</th>
-                <th>Телефон</th>
-                <th>Веб-сайт</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Rating</th>
+                <th>Reviews</th>
+                <th>Photo</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Строки будут добавляться здесь -->
+            <!-- Saved places will be added here -->
         </tbody>
     </table>
 
-    <!-- Подключение Google Maps API -->
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBaN_GVJPGl4UszRbJIJ2iziVBh8XOsMo&libraries=places&callback=initMap"></script>
-    <!-- Подключение внешнего JS -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBaN_GVJPGl4UszRbJIJ2iziVBh8XOsMo&libraries=places,geometry&callback=initMap"></script>
     <script src="script.js"></script>
 </body>
 </html>
